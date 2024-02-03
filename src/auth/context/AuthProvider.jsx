@@ -46,13 +46,13 @@ const AuthProvider = ({ children }) => {
     const signUp = async (email, password) => {
         
         const response = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(response);
+        // console.log(response);
     }
 
     const signIn = async (email, password) => {
 
         const response = await signInWithEmailAndPassword(auth, email, password);
-        console.log(response);
+        // console.log(response);
     }
 
 
