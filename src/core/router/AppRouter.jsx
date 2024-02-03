@@ -4,38 +4,45 @@ import LoginView from "../../pages/login/views/LoginView.JSX"
 import UserProfile from "../../pages/userProfile/views/UserProfile"
 import PublicRoute from "./PublicRoute"
 import ProtectedRoute from "./ProtectedRoute"
+import Layout from "../layout/Layout"
 
 export const appRouter = createBrowserRouter([
-    {   
-        path:"/",
+    {
+        path: "/",
         element: (
-            <ProtectedRoute>
-                <HomeView/>
-            </ProtectedRoute>
+            <PublicRoute>
+                <Layout>
+                    <HomeView />
+                </Layout>
+            </PublicRoute>
         ),
     },
 
     {
         path: "/login",
-        element: 
-        (
-            <PublicRoute>
-               <LoginView/>     
-            </PublicRoute>
-        )
-        
+        element:
+            (
+                <PublicRoute>
+                    <Layout>
+                        <LoginView />
+                    </Layout>
+                </PublicRoute>
+            )
+
     },
     {
         path: "/userProfile",
         element: (
             <ProtectedRoute>
-                <UserProfile/>
+                <Layout>
+                    <UserProfile />
+                </Layout>
             </ProtectedRoute>
         ),
     },
     {
         path: "*",
-        element: <Navigate to="/"/>,
+        element: <Navigate to="/" />,
     }
 
 

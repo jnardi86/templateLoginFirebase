@@ -1,22 +1,18 @@
-import React from 'react'
 import { useAuth } from '../../../auth/hooks/useAuth';
 
-const LoginForm = () => {
-
+const SigninForm = () => {
+    
     const { login } = useAuth()
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const form = new FormData(event.target);
-        const data = Object.fromEntries(form.entries());
+        const { email, password } = Object.fromEntries(form.entries());
         login({
-            email: data.email.toString(),
+            email: email,
         });
-        
-
     }
-
-
+    
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -31,8 +27,7 @@ const LoginForm = () => {
                 Iniciar Sesión
             </button>
         </form>
-
     )
 }
 
-export default LoginForm
+export default SigninForm

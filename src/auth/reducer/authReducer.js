@@ -1,8 +1,8 @@
 export const authInitialState = {
     isLoggedIn: false,
+    user: null,
 };
 
-// EJEMPLO CON LOCAL STORAGE. EN NUESTRO CASO HAY QUE VER COMO ES CON FIREBASE
 
 export const AUTH_KEY_LOCAL_STORAGE = "auth"
 
@@ -21,11 +21,14 @@ export const authReducer = (
         case AUTH_TYPES.LOGIN:
             return {
                 ...state,
+                user: payload,
                 isLoggedIn: true,
+
             }
         case AUTH_TYPES.LOGOUT:
             return {
                 ...state,
+                user: null,
                 isLoggedIn: false,
             }
         default:
